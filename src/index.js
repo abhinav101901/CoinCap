@@ -9,7 +9,7 @@ app.use(express.json())
 mongoose.set('strictQuery', true)
 
 mongoose.connect(
-    "mongodb+srv://new_user:jk1BBWwmxQpZ31zO@cluster0.pxvwsjp.mongodb.net/BlockChain"
+    "mongodb+srv://abhinav:abhi123@cluster0.qicwtqo.mongodb.net/coins"
 )
 .then(() => console.log("MDB is connected"))
 .catch(err => console.log(err))

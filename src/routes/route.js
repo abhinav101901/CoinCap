@@ -7,8 +7,13 @@ const CoinModel = require("../models/coinmodel")
 router.get("/assets", async (_, res) => {
 
     try {
+        var config = {
+            method: 'get',
+            url: 'https://api.coincap.io/v2/assets',
+            headers: {Authorization:"Bearer 562d83c1-6580-458d-9441-85635259da45"}
+          };
 
-        let coinData = await axios('http://api.coincap.io/v2/assets')
+        let coinData = await axios(config)
 
         let coinArr = coinData.data.data
 
@@ -20,7 +25,7 @@ router.get("/assets", async (_, res) => {
             return p1 - p2
         })
 
-        let dbCoin = await CoinModel.create(sortedCoin)
+        let dbCoin = await CoinModel.create(coinArr)
 
         await CoinModel.deleteMany({ _id: { $nin: dbCoin.map(i => i._id) } })
 

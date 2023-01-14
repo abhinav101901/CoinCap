@@ -10,6 +10,7 @@ module.exports = mongoose.model(
         {
             symbol: String,
             name: String,
+            rank:String,
             marketCapUsd: String,
             priceUsd: String
         }
